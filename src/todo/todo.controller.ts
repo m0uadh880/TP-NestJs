@@ -5,7 +5,7 @@ import { CreateTodoDto } from 'src/dto/create.dto';
 import { UpdateTodoDto } from 'src/dto/update.dto';
 import { TodoEntity } from 'src/entity/todo.entity';
 
-@Controller('todos')
+@Controller('todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
