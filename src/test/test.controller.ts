@@ -1,4 +1,5 @@
 import { Controller, Get, Inject } from '@nestjs/common';
+import { UuidService } from 'src/uuid/uuid.service';
 
 @Controller('test')
 
@@ -6,7 +7,7 @@ import { Controller, Get, Inject } from '@nestjs/common';
 export class TestController {
 
   constructor(
-    @Inject('UUID') private readonly uuid: () => string
+    @Inject(UuidService) private readonly uuid: () => string
   ){
 
   }

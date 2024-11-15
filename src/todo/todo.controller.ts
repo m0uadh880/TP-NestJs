@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch, Param, Delete, Get, ParseIntPipe, Query, Version } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Param, Delete, Get, ParseIntPipe, Query, Version, Put } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { StatusEnum } from 'src/enums/status.enum';
 import { CreateTodoDto } from 'src/todo/dto/create.dto';
@@ -25,7 +25,7 @@ export class TodoController {
     return this.todoService.addTodo2(createTodoDto);
   }
 
-  @Patch(':id')
+  @Put(':id')
   async updateTodo(
     @Param('id') id: number,
     @Body() updateTodoDto: UpdateTodoDto,
@@ -39,7 +39,7 @@ export class TodoController {
     return { message: `Todo with id ${id} deleted successfully` };
   }
 
-  @Patch(':id/restore')
+  @Get(':id/restore')
   async restoreTodo(
     @Param('id') id: number,
   ): Promise<TodoEntity> {

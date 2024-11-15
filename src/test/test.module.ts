@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TestService } from './test.service';
 import { TestController } from './test.controller';
-import { CommonModule } from 'src/common/common.module';
+import { UuidService } from 'src/uuid/uuid.service';
 
 @Module({
-  imports: [CommonModule],
-  providers: [TestService],
+  providers: [TestService,UuidService],
   controllers: [TestController]
 })
 export class TestModule {}

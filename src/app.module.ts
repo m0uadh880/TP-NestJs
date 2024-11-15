@@ -8,6 +8,7 @@ import { TodoEntity } from './entity/todo.entity';
 import { TodoModule } from './todo/todo.module';
 import { UuidService } from './uuid/uuid.service';
 
+
 @Module({
   imports: [
     CommonModule,
@@ -15,12 +16,12 @@ import { UuidService } from './uuid/uuid.service';
     TodoModule,
     TypeOrmModule.forRoot(
       {
-        type: 'mysql',
-        host: process.env.DB_HOST,
+        type:'mysql',
+        host: 'localhost',
         port: 3306, 
-        username: process.env.DB_USER, 
-        password: process.env.DB_PASSWORD, 
-        database: process.env.DB_NAME, 
+        username: 'root', 
+        password: 'password', 
+        database: 'tododb', 
         entities: [
           TodoEntity
         ],
