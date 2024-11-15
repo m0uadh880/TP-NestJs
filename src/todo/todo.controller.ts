@@ -25,6 +25,23 @@ export class TodoController {
     return this.todoService.addTodo2(createTodoDto);
   }
 
+  
+  @Get(':id')
+  async getTodoById(@Param('id') id: number): Promise<TodoEntity> {
+    return this.todoService.getTodoById(id);
+  }
+  
+  @Get()
+  async getAllTodos(
+    @Query('search') search?: string,
+    @Query('status') status?: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ): Promise<{ todos: TodoEntity[]; total: number; page: number; lastPage: number }> {
+    return this.todoService.getAllTodos(search, status, page, limit);
+  }
+
+
   @Put(':id')
   async updateTodo(
     @Param('id') id: number,
@@ -44,21 +61,6 @@ export class TodoController {
     @Param('id') id: number,
   ): Promise<TodoEntity> {
     return this.todoService.restoreTodo(id);
-  }
-
-  @Get()
-  async getAllTodos(
-    @Query('search') search?: string,
-    @Query('status') status?: string,
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10,
-  ): Promise<{ todos: TodoEntity[]; total: number; page: number; lastPage: number }> {
-    return this.todoService.getAllTodos(search, status, page, limit);
-  }
-
-  @Get(':id')
-  async getTodoById(@Param('id') id: number): Promise<TodoEntity> {
-    return this.todoService.getTodoById(id);
   }
 
   @Get('count/status')
