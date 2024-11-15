@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { validate } from 'class-validator';
-import { CreateTodoDto } from 'src/dto/create.dto';
-import { UpdateTodoDto } from 'src/dto/update.dto';
+import { CreateTodoDto } from 'src/todo/dto/create.dto';
+import { UpdateTodoDto } from 'src/todo/dto/update.dto';
 import { TodoEntity } from 'src/entity/todo.entity';
 import { StatusEnum } from 'src/enums/status.enum';
 import { Repository } from 'typeorm';
