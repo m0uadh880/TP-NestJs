@@ -7,7 +7,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TodoEntity } from './entity/todo.entity';
 import { TodoModule } from './todo/todo.module';
 import { UuidService } from './uuid/uuid.service';
+import * as dotenv from 'dotenv';
 
+
+
+dotenv.config();
 
 @Module({
   imports: [
@@ -17,11 +21,11 @@ import { UuidService } from './uuid/uuid.service';
     TypeOrmModule.forRoot(
       {
         type:'mysql',
-        host: 'localhost',
-        port: 3306, 
-        username: 'root', 
-        password: 'password', 
-        database: 'tododb', 
+        host: process.env.DB_HOST,
+        port: +process.env.DB_PORT, 
+        username: process.env.DB_USERNAME, 
+        password: process.env.DB_PASSWORD, 
+        database: process.env.DB_NAME, 
         entities: [
           TodoEntity
         ],
