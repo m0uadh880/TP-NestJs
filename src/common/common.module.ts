@@ -1,5 +1,5 @@
 import { Global, Module } from '@nestjs/common';
-import { UuidService } from 'src/uuid/uuid.service';
+import { UuidService } from '../uuid/uuid.service';
 
 @Global()
 @Module({

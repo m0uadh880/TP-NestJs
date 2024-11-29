@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, MinLength, MaxLength } from 'class-validator';
-import { StatusEnum } from 'src/enums/status.enum';
-import { TodoValidationMessages } from 'src/validation/todo.validation';
+import { StatusEnum } from '../../enums/status.enum';
+import { TodoValidationMessages } from '../../validation/todo.validation';
 
 export class CreateTodoDto {
   @IsString()

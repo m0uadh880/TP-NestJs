@@ -1,6 +1,6 @@
 import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base.entity'
-import { StatusEnum } from 'src/enums/status.enum';
+import { StatusEnum } from '../enums/status.enum';
 
 @Entity('todos')
 export class TodoEntity extends BaseEntity {

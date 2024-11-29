@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TestService } from './test.service';
 import { TestController } from './test.controller';
-import { UuidService } from 'src/uuid/uuid.service';
+import { UuidService } from '../uuid/uuid.service';
 
 @Module({
   providers: [TestService,UuidService],

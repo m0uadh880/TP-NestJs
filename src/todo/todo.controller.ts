@@ -1,9 +1,9 @@
 import { Controller, Post, Body, Patch, Param, Delete, Get, ParseIntPipe, Query, Version, Put, Req } from '@nestjs/common';
 import { TodoService } from './todo.service';
-import { StatusEnum } from 'src/enums/status.enum';
-import { CreateTodoDto } from 'src/todo/dto/create.dto';
-import { UpdateTodoDto } from 'src/todo/dto/update.dto';
-import { TodoEntity } from 'src/entity/todo.entity';
+import { StatusEnum } from '../enums/status.enum';
+import { CreateTodoDto } from '../todo/dto/create.dto';
+import { UpdateTodoDto } from '../todo/dto/update.dto';
+import { TodoEntity } from '../entity/todo.entity';
 
 @Controller('todo')
 export class TodoController {

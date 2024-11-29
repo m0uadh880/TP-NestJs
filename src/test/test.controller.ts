@@ -1,5 +1,5 @@
 import { Controller, Get, Inject } from '@nestjs/common';
-import { UuidService } from 'src/uuid/uuid.service';
+import { UuidService } from '../uuid/uuid.service';
 
 @Controller('test')
 

@@ -3,7 +3,7 @@ import { CreateSkillDto } from './dto/create-skill.dto';
 import { UpdateSkillDto } from './dto/update-skill.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Skill } from 'src/entity/skill.entity';
+import { Skill } from '../entity/skill.entity';
 
 @Injectable()
 export class SkillService {

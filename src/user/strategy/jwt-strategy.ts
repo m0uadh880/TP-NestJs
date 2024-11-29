@@ -6,7 +6,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UnauthorizedException } from '@nestjs/common';
 import * as dotenv from 'dotenv';
-import { User } from 'src/entity/user.entity';
+import { User } from '../../entity/user.entity';
 import { PayloadInterface } from '../interfaces/payload.interface';
 
 dotenv.config();

@@ -23,6 +23,7 @@ async function bootstrap() {
     skills.push(skill);
   }
 
+
   const users = [];
   for (let i = 0; i < 10; i++) {
     const mail = falso.randEmail();

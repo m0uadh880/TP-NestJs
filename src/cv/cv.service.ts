@@ -7,9 +7,9 @@ import { CreateCvDto } from './dto/create-cv.dto';
 import { UpdateCvDto } from './dto/update-cv.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Cv } from 'src/entity/cv.entity';
-import { Skill } from 'src/entity/skill.entity';
-import { User } from 'src/entity/user.entity';
+import { Cv } from '../entity/cv.entity';
+import { Skill } from '../entity/skill.entity';
+import { User } from '../entity/user.entity';
 
 @Injectable()
 export class CvService {
