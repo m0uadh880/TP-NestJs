@@ -9,6 +9,12 @@ import { TodoModule } from './todo/todo.module';
 import { UuidService } from './uuid/uuid.service';
 import * as dotenv from 'dotenv';
 import { AuthMiddleware } from './middleware/auth.middleware';
+import { CvModule } from './cv/cv.module';
+import { UserModule } from './user/user.module';
+import { SkillModule } from './skill/skill.module';
+import { Skill } from './entity/skill.entity';
+import { Cv } from './entity/cv.entity';
+import { User } from './entity/user.entity';
 
 
 
@@ -28,10 +34,17 @@ dotenv.config();
         password: process.env.DB_PASSWORD, 
         database: process.env.DB_NAME, 
         entities: [
-          TodoEntity
+          TodoEntity,
+          Skill,
+          Cv,
+          User
         ],
       synchronize: true, 
-    })
+    }),
+    TodoModule,
+    CvModule,
+    UserModule,
+    SkillModule,
   ],
   controllers: [AppController],
   providers: [AppService, UuidService],
