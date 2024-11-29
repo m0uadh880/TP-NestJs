@@ -10,7 +10,6 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtStrategy } from './strategy/jwt-strategy';
 
 dotenv.config();
-
 @Module({
   imports: [
     ConfigModule,

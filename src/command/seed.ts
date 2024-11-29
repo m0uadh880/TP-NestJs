@@ -10,9 +10,11 @@ import { Cv } from '../entity/cv.entity';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
+
   const cvService = app.get(CvService);
   const userService = app.get(UserService);
   const skillService = app.get(SkillService);
+
   const skills = [];
   for (let i = 0; i < 10; i++) {
     const skill = new Skill();
@@ -20,6 +22,7 @@ async function bootstrap() {
     const newSkill = await skillService.addSkill(skill);
     skills.push(skill);
   }
+
   const users = [];
   for (let i = 0; i < 10; i++) {
     const mail = falso.randEmail();
@@ -32,6 +35,7 @@ async function bootstrap() {
     const newUser = await userService.register(user);
     users.push(newUser);
   }
+
 
   for (let i = 0; i < 10; i++) {
     const firstname = falso.randFirstName();
@@ -51,6 +55,10 @@ async function bootstrap() {
     cv.skills = user_skills;
     const newCv = await cvService.addCvGivenACV(cv, users[i % 10]);
   }
+
+
+
+  
   await app.close();
 }
 bootstrap();

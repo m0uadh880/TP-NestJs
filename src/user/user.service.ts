@@ -78,4 +78,34 @@ export class UserService {
       throw new NotFoundException('Password INCORRECT');
     }
   }
+
+  
+  async buildSearchQuery(query: any, search?: string) {
+    if (search) {
+        query.andWhere('user.name LIKE :search', { search: `%${search}%` });
+    }
+  
+  }
+
+  async applyPagination(query: any, page: number, limit: number) {
+    query.skip((page - 1) * limit).take(limit);
+  }
+
+  async getAllUsers(search?:string, status?:string, page: number = 1, limit: number = 10) {
+    const query = this.userRepository.createQueryBuilder('user');
+    
+    await this.buildSearchQuery(query, search);
+    
+    await this.applyPagination(query, page, limit);
+    
+    const [users, total] = await query.getManyAndCount();
+
+    return {
+        users,
+        total,
+        page,
+        lastPage: Math.ceil(total / limit),
+    };
+  }
+
 }
