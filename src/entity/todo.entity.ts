@@ -4,6 +4,9 @@ import { StatusEnum } from 'src/enums/status.enum';
 
 @Entity('todos')
 export class TodoEntity extends BaseEntity {
+  @Column({ type: 'text', nullable: true})
+  userId: string;
+  
   @Column({ type: 'varchar', length: 255 })
   name: string;
 

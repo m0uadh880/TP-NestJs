@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch, Param, Delete, Get, ParseIntPipe, Query, Version, Put } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Param, Delete, Get, ParseIntPipe, Query, Version, Put, Req } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { StatusEnum } from 'src/enums/status.enum';
 import { CreateTodoDto } from 'src/todo/dto/create.dto';
@@ -21,8 +21,9 @@ export class TodoController {
 
   @Post()
   @Version('2')
-  async addTodo2(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoService.addTodo2(createTodoDto);
+  async addTodo2(@Body() createTodoDto: CreateTodoDto, @Req() req: Request) {
+    const userId = req['userId'];
+    return this.todoService.addTodo2(createTodoDto,userId);
   }
 
   
@@ -46,13 +47,16 @@ export class TodoController {
   async updateTodo(
     @Param('id') id: number,
     @Body() updateTodoDto: UpdateTodoDto,
+    @Req() req: Request
   ) {
-    return this.todoService.updateTodo(id, updateTodoDto);
+    const userId = req['user'].userId;
+    return this.todoService.updateTodo(id, updateTodoDto, userId);
   }
 
   @Delete(':id')
-  async deleteTodo(@Param('id') id: number) {
-    await this.todoService.deleteTodo(id);
+  async deleteTodo(@Param('id') id: number, @Req() req: Request) {
+    const userId = req['user'].userId;
+    await this.todoService.deleteTodo(id, userId);
     return { message: `Todo with id ${id} deleted successfully` };
   }
 
