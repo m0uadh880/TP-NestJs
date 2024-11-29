@@ -18,7 +18,7 @@ export class AuthMiddleware implements NestMiddleware {
         req['userId'] = decodedToken['id'];
         next();
       } else {
-        res.status(500).json({ error: 'Invalide token!' })
+        res.status(500).json({ error: 'Invalide token' })
       }
     } catch (e) {
       res.status(500).json({ error: 'Unauthorized user' })
