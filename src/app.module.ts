@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CommonModule } from './common/common.module';
@@ -8,6 +8,7 @@ import { TodoEntity } from './entity/todo.entity';
 import { TodoModule } from './todo/todo.module';
 import { UuidService } from './uuid/uuid.service';
 import * as dotenv from 'dotenv';
+import { AuthMiddleware } from './middleware/auth.middleware';
 
 
 
@@ -36,4 +37,10 @@ dotenv.config();
   providers: [AppService, UuidService],
   
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(AuthMiddleware)
+      .forRoutes({ path: '/todo', method: RequestMethod.ALL });
+  }
+}
